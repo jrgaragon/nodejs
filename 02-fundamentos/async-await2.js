@@ -27,7 +27,11 @@ let getSalario = async(empleado) => {
     if (!salarioDB) {
         throw new Error(`No se encontro salario para el usuario ${empleado.nombre}`);
     } else {
-        return { nombre: empleado.nombre, salario: salarioDB.salario, id: empleado.id };
+        return {
+            nombre: empleado.nombre,
+            salario: salarioDB.salario,
+            id: empleado.id
+        };
     }
 };
 
@@ -45,8 +49,7 @@ let getEmpleado = async(id) => {
 let getInformacion = async(id) => {
     let empleado = await getEmpleado(id);
     let resp = await getSalario(empleado);
-    console.log(resp);
     return `${resp.nombre} salario ${resp.salario}`;
 };
 
-getInformacion(3).then(mensaje => console.log(mensaje)).catch(err => console.log(err));
+getInformacion(2).then(mensaje => console.log(mensaje)).catch(err => console.log(err));
