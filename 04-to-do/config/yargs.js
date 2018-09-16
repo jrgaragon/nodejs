@@ -17,7 +17,15 @@ const argv = require('yargs')
             desc: 'Descripcion de la tarea por hacer'
         }
     })
-    .help()
+    .command('listar', 'listar tarea', {
+        listar: {
+            demand: true,
+            alias: 'l',
+            desc: 'listar las tareas por hacer'
+        }
+    })
+
+.help()
     .argv;
 
 module.exports = {
