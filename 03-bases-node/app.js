@@ -1,8 +1,18 @@
-const { crearArchivo } = require('./multiplicar/miltiplicar')
+const { crearArchivo, listarTabla } = require('./multiplicar/multiplicar');
+const argv = require('./config/yargs').argv;
+const colors = require('colors');
 
-let base = 5;
+let command = argv._[0];
 
-let argv = process.argv;
-let parametroBase = argv[2];
-
-crearArchivo(parametroBase).then(file => console.log(file)).catch(err => { console.log(err) });
+switch (command) {
+    case 'listar':
+        listarTabla(argv.base, argv.limite)
+            .then(file => {})
+            .catch(err => { console.log(err) });
+        break
+    case 'crear':
+        crearArchivo(argv.base, argv.limite)
+            .then(file => console.log(colors.green(file)))
+            .catch(err => { console.log(err) });
+        break;
+}
