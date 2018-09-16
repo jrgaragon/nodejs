@@ -18,7 +18,12 @@ switch (command) {
         }
         break;
     case 'actualizar':
-        console.log('actualizar');
+        let result = todo.update(argv.descripcion, argv.completado);
+        console.log(result);
+        break;
+    case 'borrar':
+        let borrarResult = todo.borrar(argv.descripcion);
+        console.log(borrarResult);
         break;
     default:
         console.log('error');

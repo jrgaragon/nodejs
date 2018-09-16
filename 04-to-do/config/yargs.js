@@ -1,9 +1,12 @@
+const descripcion = {
+    demand: true,
+    alias: 'd',
+}
+
+
 const argv = require('yargs')
     .command('actualizar', 'actualizar tareas', {
-        descripcion: {
-            demand: true,
-            alias: 'd',
-        },
+        descripcion,
         completado: {
             demand: true,
             default: true,
@@ -11,21 +14,16 @@ const argv = require('yargs')
         }
     })
     .command('crear', 'crear tarea', {
+        descripcion
+    })
+    .command('borrar', 'borrar tarea', {
         descripcion: {
             demand: true,
-            alias: 'd',
-            desc: 'Descripcion de la tarea por hacer'
+            alias: 'd'
         }
     })
-    .command('listar', 'listar tarea', {
-        listar: {
-            demand: true,
-            alias: 'l',
-            desc: 'listar las tareas por hacer'
-        }
-    })
-
-.help()
+    .command('listar', 'listar tarea', {})
+    .help()
     .argv;
 
 module.exports = {

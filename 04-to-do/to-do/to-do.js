@@ -38,7 +38,36 @@ const save = () => {
     });
 };
 
+const update = (descripcion, completado = true) => {
+    load();
+
+    let index = todo.findIndex(tarea => tarea.descripcion === descripcion);
+
+    if (index >= 0) {
+        todo[index].completado = completado;
+        save();
+        return true;
+    } else {
+        return false;
+    }
+};
+
+const borrar = (descripcion) => {
+    load();
+    let temptodo = todo.filter(tarea => tarea.descripcion !== descripcion);
+
+    if (temptodo.length === todo.length) {
+        return false;
+    } else {
+        todo = temptodo;
+        save();
+        return true;
+    }
+}
+
 module.exports = {
     crear,
-    listar
+    listar,
+    update,
+    borrar
 }
