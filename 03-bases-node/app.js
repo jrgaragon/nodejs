@@ -2,4 +2,7 @@ const { crearArchivo } = require('./multiplicar/miltiplicar')
 
 let base = 5;
 
-crearArchivo(base).then(file => console.log(file)).catch(err => { console.log(err) })
+let argv = process.argv;
+let parametroBase = argv[2];
+
+crearArchivo(parametroBase).then(file => console.log(file)).catch(err => { console.log(err) });
